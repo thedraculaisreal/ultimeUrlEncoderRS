@@ -7,8 +7,8 @@ fn main() -> std::io::Result<()> {
     let mut contents = String::new();
     file.read_to_string(&mut contents)?;
     // passing a ref mutable char, so we can change the chars to url encoded versions of themselves.
-    for ref mut char in contents.chars() {
-	if *char == '\'' {
+    for char in contents.chars() {
+	if char == '\'' {
 	    print!("%27");
 	}
 	else {
