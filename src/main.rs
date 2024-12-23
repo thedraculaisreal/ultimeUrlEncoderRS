@@ -1,331 +1,346 @@
 //use std::io;
-use std::fs::File;
+use std::fs;
+use std::fs::*;
 use std::io::prelude::*;
 
 fn main() -> std::io::Result<()> {
-    let mut file = File::open("/home/schwarztoter/projects/coding/rust/ultimeUrlEncoderRS/Auth_Bypass.txt")?;
+    let mut content = String::new();
+    content = encode_content();
+    write_content(content);
+    Ok(())
+}
+
+fn write_content(content: String){
+    File::create("encoded.txt").expect("Failed to create file");
+    fs::write("encoded.txt", content).expect("Failed to write content.");
+    println!("Done encoding file...")
+}
+
+fn encode_content() -> String {
+    let mut file = File::open("/home/schwarztoter/projects/coding/rust/ultimeUrlEncoderRS/Auth_Bypass.txt")
+	.expect("File not found");
     let mut contents = String::new();
-    file.read_to_string(&mut contents)?;
-    // passing a ref mutable char, so we can change the chars to url encoded versions of themselves.
+    let mut encoded_content = String::new();
+    file.read_to_string(&mut contents).expect("Failed to read txt into buffer");
     for char in contents.chars() {
 	if char == ' ' {
-	    print!("%20");
+	    encoded_content.push_str("%20");
 	}
 	else if char == '!' {
-	    print!("%21");
+	    encoded_content.push_str("%21");
 	}
 	else if char == '"' {
-	    print!("%22");
+	    encoded_content.push_str("%22");
 	}
 	else if char == '#' {
-	    print!("%23");
+	    encoded_content.push_str("%23");
 	}
 	else if char == '$' {
-	    print!("%24");
+	    encoded_content.push_str("%24");
 	}
 	else if char == '%' {
-	    print!("%25");
+	    encoded_content.push_str("%25");
 	}
 	else if char == '&' {
-	    print!("%26");
+	    encoded_content.push_str("%26");
 	}
 	else if char == '\'' {
-	    print!("%27");
+	    encoded_content.push_str("%27");
 	}
 	else if char == '(' {
-	    print!("%28");
+	    encoded_content.push_str("%28");
 	}
 	else if char == ')' {
-	    print!("%29");
+	    encoded_content.push_str("%29");
 	}
 	else if char == '*' {
-	    print!("%2A");
+	    encoded_content.push_str("%2A");
 	}
 	if char == ' ' {
-	    print!("%20");
+	    encoded_content.push_str("%20");
 	}
 	else if char == '!' {
-	    print!("%21");
+	    encoded_content.push_str("%21");
 	}
 	else if char == '"' {
-	    print!("%22");
+	    encoded_content.push_str("%22");
 	}
 	else if char == '#' {
-	    print!("%23");
+	    encoded_content.push_str("%23");
 	}
 	else if char == '$' {
-	    print!("%24");
+	    encoded_content.push_str("%24");
 	}
 	else if char == '%' {
-	    print!("%25");
+	    encoded_content.push_str("%25");
 	}
 	else if char == '&' {
-	    print!("%26");
+	    encoded_content.push_str("%26");
 	}
 	else if char == '\'' {
-	    print!("%27");
+	    encoded_content.push_str("%27");
 	}
 	else if char == '(' {
-	    print!("%28");
+	    encoded_content.push_str("%28");
 	}
 	else if char == ')' {
-	    print!("%29");
+	    encoded_content.push_str("%29");
 	}
 	else if char == '*' {
-	    print!("%2A");
+	    encoded_content.push_str("%2A");
 	}
 	else if char == '+' {
-	    print!("%2B");
+	    encoded_content.push_str("%2B");
 	}
 	else if char == ',' {
-	    print!("%2C");
+	    encoded_content.push_str("%2C");
 	}
 	else if char == '-' {
-	    print!("%2D");
+	    encoded_content.push_str("%2D");
 	}
 	else if char == '.' {
-	    print!("%2E");
+	    encoded_content.push_str("%2E");
 	}
 	else if char == '/' {
-	    print!("%2F");
+	    encoded_content.push_str("%2F");
 	}
 	else if char == '0' {
-	    print!("%30");
+	    encoded_content.push_str("%30");
 	}
 	else if char == '1' {
-	    print!("%31");
+	    encoded_content.push_str("%31");
 	}
 	else if char == '2' {
-	    print!("%32");
+	    encoded_content.push_str("%32");
 	}
 	else if char == '3' {
-	    print!("%33");
+	    encoded_content.push_str("%33");
 	}
 	else if char == '4' {
-	    print!("%34");
+	    encoded_content.push_str("%34");
 	}
 	else if char == '5' {
-	    print!("%35");
+	    encoded_content.push_str("%35");
 	}
 	else if char == '6' {
-	    print!("%36");
+	    encoded_content.push_str("%36");
 	}
 	else if char == '7' {
-	    print!("%37");
+	    encoded_content.push_str("%37");
 	}
 	else if char == '8' {
-	    print!("%38");
+	    encoded_content.push_str("%38");
 	}
 	else if char == '9' {
-	    print!("%39");
+	    encoded_content.push_str("%39");
 	}
 	else if char == ':' {
-	    print!("%3A");
+	    encoded_content.push_str("%3A");
 	}
 	else if char == ';' {
-	    print!("%3B");
+	    encoded_content.push_str("%3B");
 	}
 	else if char == '<' {
-	    print!("%3C");
+	    encoded_content.push_str("%3C");
 	}
 	else if char == '=' {
-	    print!("%3D");
+	    encoded_content.push_str("%3D");
 	}
 	else if char == '?' {
-	    print!("%3F");
+	    encoded_content.push_str("%3F");
 	}
 	else if char == '@' {
-	    print!("%40");
+	    encoded_content.push_str("%40");
 	}
 	else if char == 'A' {
-	    print!("%41");
+	    encoded_content.push_str("%41");
 	}
 	else if char == 'B' {
-	    print!("%42");
+	    encoded_content.push_str("%42");
 	}
 	else if char == 'C' {
-	    print!("%43");
+	    encoded_content.push_str("%43");
 	}
 	else if char == 'D' {
-	    print!("%44");
+	    encoded_content.push_str("%44");
 	}
 	else if char == 'E' {
-	    print!("%45");
+	    encoded_content.push_str("%45");
 	}
 	else if char == 'F' {
-	    print!("%46");
+	    encoded_content.push_str("%46");
 	}
 	else if char == 'G' {
-	    print!("%47");
+	    encoded_content.push_str("%47");
 	}
 	else if char == 'H' {
-	    print!("%48");
+	    encoded_content.push_str("%48");
 	}
 	else if char == 'I' {
-	    print!("%49");
+	    encoded_content.push_str("%49");
 	}
 	else if char == 'J' {
-	    print!("%4A");
+	    encoded_content.push_str("%4A");
 	}
 	else if char == 'K' {
-	    print!("%4B");
+	    encoded_content.push_str("%4B");
 	}
 	else if char == 'L' {
-	    print!("%4C");
+	    encoded_content.push_str("%4C");
 	}
 	else if char == 'M' {
-	    print!("%4D");
+	    encoded_content.push_str("%4D");
 	}
 	else if char == 'N' {
-	    print!("%4E");
+	    encoded_content.push_str("%4E");
 	}
 	else if char == 'O' {
-	    print!("%4F");
+	    encoded_content.push_str("%4F");
 	}
 	else if char == 'P' {
-	    print!("%50");
+	    encoded_content.push_str("%50");
 	}
 	else if char == 'Q' {
-	    print!("%51");
+	    encoded_content.push_str("%51");
 	}
 	else if char == 'R' {
-	    print!("%52");
+	    encoded_content.push_str("%52");
 	}
 	else if char == 'S' {
-	    print!("%53");
+	    encoded_content.push_str("%53");
 	}
 	else if char == 'T' {
-	    print!("%54");
+	    encoded_content.push_str("%54");
 	}
 	else if char == 'U' {
-	    print!("%55");
+	    encoded_content.push_str("%55");
 	}
 	else if char == 'V' {
-	    print!("%56");
+	    encoded_content.push_str("%56");
 	}
 	else if char == 'W' {
-	    print!("%57");
+	    encoded_content.push_str("%57");
 	}
 	else if char == 'X' {
-	    print!("%58");
+	    encoded_content.push_str("%58");
 	}
 	else if char == 'Y' {
-	    print!("%59");
+	    encoded_content.push_str("%59");
 	}
 	else if char == 'Z' {
-	    print!("%5A");
+	    encoded_content.push_str("%5A");
 	}
 	else if char == '[' {
-	    print!("%5B");
+	    encoded_content.push_str("%5B");
 	}
 	else if char == '\\' {
-	    print!("%5C");
+	    encoded_content.push_str("%5C");
 	}
 	else if char == ']' {
-	    print!("%5D");
+	    encoded_content.push_str("%5D");
 	}
 	else if char == '^' {
-	    print!("%5E");
+	    encoded_content.push_str("%5E");
 	}
 	else if char == '_' {
-	    print!("%5F");
+	    encoded_content.push_str("%5F");
 	}
 	else if char == '`' {
-	    print!("%60");
+	    encoded_content.push_str("%60");
 	}
 	else if char == 'a' {
-	    print!("%61");
+	    encoded_content.push_str("%61");
 	}
 	else if char == 'b' {
-	    print!("%62");
+	    encoded_content.push_str("%62");
 	}
 	else if char == 'c' {
-	    print!("%63");
+	    encoded_content.push_str("%63");
 	}
 	else if char == 'd' {
-	    print!("%64");
+	    encoded_content.push_str("%64");
 	}
 	else if char == 'e' {
-	    print!("%65");
+	    encoded_content.push_str("%65");
 	}
 	else if char == 'f' {
-	    print!("%66");
+	    encoded_content.push_str("%66");
 	}
 	else if char == 'g' {
-	    print!("%67");
+	    encoded_content.push_str("%67");
 	}
 	else if char == 'h' {
-	    print!("%68");
+	    encoded_content.push_str("%68");
 	}
 	else if char == 'i' {
-	    print!("%69");
+	    encoded_content.push_str("%69");
 	}
 	else if char == 'j' {
-	    print!("%6A");
+	    encoded_content.push_str("%6A");
 	}
 	else if char == 'k' {
-	    print!("%6B");
+	    encoded_content.push_str("%6B");
 	}
 	else if char == 'l' {
-	    print!("%6C");
+	    encoded_content.push_str("%6C");
 	}
 	else if char == 'm' {
-	    print!("%6D");
+	    encoded_content.push_str("%6D");
 	}
 	else if char == 'n' {
-	    print!("%6E");
+	    encoded_content.push_str("%6E");
 	}
 	else if char == 'o' {
-	    print!("%6F");
+	    encoded_content.push_str("%6F");
 	}
 	else if char == 'p' {
-	    print!("%70");
+	    encoded_content.push_str("%70");
 	}
 	else if char == 'q' {
-	    print!("%71");
+	    encoded_content.push_str("%71");
 	}
 	else if char == 'r' {
-	    print!("%72");
+	    encoded_content.push_str("%72");
 	}
 	else if char == 's' {
-	    print!("%73");
+	    encoded_content.push_str("%73");
 	}
 	else if char == 't' {
-	    print!("%74");
+	    encoded_content.push_str("%74");
 	}
 	else if char == 'u' {
-	    print!("%75");
+	    encoded_content.push_str("%75");
 	}
 	else if char == 'v' {
-	    print!("%76");
+	    encoded_content.push_str("%76");
 	}
 	else if char == 'w' {
-	    print!("%77");
+	    encoded_content.push_str("%77");
 	}
 	else if char == 'x' {
-	    print!("%78");
+	    encoded_content.push_str("%78");
 	}
 	else if char == 'y' {
-	    print!("%79");
+	    encoded_content.push_str("%79");
 	}
 	else if char == 'z' {
-	    print!("%7A");
+	    encoded_content.push_str("%7A");
 	}
 	else if char == '{' {
-	    print!("%7B");
+	    encoded_content.push_str("%7B");
 	}
 	else if char == '|' {
-	    print!("%7C");
+	    encoded_content.push_str("%7C");
 	}
 	else if char == '}' {
-	    print!("%7D");
+	    encoded_content.push_str("%7D");
 	}
 	else if char == '~' {
-	    print!("%7E");
+	    encoded_content.push_str("%7E");
 	}
 	else {
-	    print!("{char}");
+	    encoded_content.push(char);
 	}
     }
-    Ok(())
+    encoded_content
 }
