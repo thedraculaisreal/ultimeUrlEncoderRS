@@ -2,60 +2,38 @@
 use std::fs;
 use std::fs::*;
 use std::io::prelude::*;
+use std::env;
 
 fn main() -> std::io::Result<()> {
+    let args: Vec<String> = env::args().collect();
+    let args_len = args.len();
+    if args_len != 3 {
+	eprintln!("ERROR: ./<executable> <path_to_file> <output_file_path>");
+	return Ok(());
+    }
+    let input = args[1].clone();
+    let output = args[2].clone();
     let mut content = String::new();
-    content = encode_content();
-    write_content(content);
+    content = encode_content(input);
+    write_content(content, output);
     Ok(())
 }
 
-fn write_content(content: String){
-    File::create("encoded.txt").expect("Failed to create file");
-    fs::write("encoded.txt", content).expect("Failed to write content.");
+// writes encoded content to a new output file.
+fn write_content(content: String, output: String){
+    File::create(&output).expect("Failed to create file");
+    fs::write(&output, content).expect("Failed to write content.");
     println!("Done encoding file...")
 }
 
-fn encode_content() -> String {
-    let mut file = File::open("/home/schwarztoter/projects/coding/rust/ultimeUrlEncoderRS/Auth_Bypass.txt")
+// urlencodes all chars, including alphanumeric.
+fn encode_content(input: String) -> String {
+    let mut file = File::open(input)
 	.expect("File not found");
     let mut contents = String::new();
     let mut encoded_content = String::new();
     file.read_to_string(&mut contents).expect("Failed to read txt into buffer");
     for char in contents.chars() {
-	if char == ' ' {
-	    encoded_content.push_str("%20");
-	}
-	else if char == '!' {
-	    encoded_content.push_str("%21");
-	}
-	else if char == '"' {
-	    encoded_content.push_str("%22");
-	}
-	else if char == '#' {
-	    encoded_content.push_str("%23");
-	}
-	else if char == '$' {
-	    encoded_content.push_str("%24");
-	}
-	else if char == '%' {
-	    encoded_content.push_str("%25");
-	}
-	else if char == '&' {
-	    encoded_content.push_str("%26");
-	}
-	else if char == '\'' {
-	    encoded_content.push_str("%27");
-	}
-	else if char == '(' {
-	    encoded_content.push_str("%28");
-	}
-	else if char == ')' {
-	    encoded_content.push_str("%29");
-	}
-	else if char == '*' {
-	    encoded_content.push_str("%2A");
-	}
 	if char == ' ' {
 	    encoded_content.push_str("%20");
 	}
