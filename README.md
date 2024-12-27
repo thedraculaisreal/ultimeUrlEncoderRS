@@ -14,4 +14,5 @@ if cargo and rust is not installed install using this command
 
 How to use:
 
-1. urlencoder <path_to_file> <output_file_path>
+1. urlencoder <path_to_file> <output_file_path> <options>
+2. if options is = 1. it encodes all chars, if not = 1 only encodes special chars.
